@@ -1,4 +1,5 @@
 <template>
+<NormalPageContainer>
   <div class="container">
     <Card :padding="0">
       <div class="flex-container">
@@ -31,6 +32,7 @@
       </div>
     </Card>
   </div>
+</NormalPageContainer>
 </template>
 <script>
   import { mapGetters } from 'vuex'

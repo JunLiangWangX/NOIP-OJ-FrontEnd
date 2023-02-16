@@ -1,4 +1,5 @@
 <template>
+<NormalPageContainer>
   <div class="flex-container">
     <div id="main">
       <Panel shadow>
@@ -40,6 +41,7 @@
       </Panel>
     </div>
   </div>
+</NormalPageContainer>
 </template>
 
 <script>

@@ -1,4 +1,13 @@
+<!--
+ * @Description: 
+ * @Author: JunLiangWang
+ * @Date: 2023-02-11 10:35:53
+ * @LastEditors: JunLiangWang
+ * @LastEditTime: 2023-02-15 22:27:18
+-->
 <template>
+  
+<NormalPageContainer>
   <div>
     <panel class="container">
       <div slot="title">{{$t('m.Compiler')}} & {{$t('m.Judger')}}</div>
@@ -35,6 +44,7 @@
     </panel>
 
   </div>
+</NormalPageContainer>
 </template>
 
 <script>

@@ -1,4 +1,5 @@
 <template>
+<NormalPageContainer>
   <Row type="flex" justify="space-around">
     <Col :span="20" id="status">
       <Alert :type="status.type" showIcon>
@@ -38,6 +39,7 @@
       </div>
     </Col>
   </Row>
+</NormalPageContainer>
 
 </template>
 

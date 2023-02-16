@@ -1,88 +1,116 @@
+<!--
+ * @Description: 首页
+ * @Author: JunLiangWang
+ * @Date: 2023-02-13 18:11:48
+ * @LastEditors: JunLiangWang
+ * @LastEditTime: 2023-02-15 16:49:17
+-->
 <template>
-  <Row type="flex" justify="space-around">
-    <Col :span="22">
-    <panel shadow v-if="contests.length" class="contest">
-      <div slot="title">
-        <Button type="text"  class="contest-title" @click="goContest">{{contests[index].title}}</Button>
-      </div>
-      <Carousel v-model="index" trigger="hover" autoplay :autoplay-speed="6000" class="contest">
-        <CarouselItem v-for="(contest, index) of contests" :key="index">
-          <div class="contest-content">
-            <div class="contest-content-tags">
-              <Button type="info" shape="circle" size="small" icon="calendar">
-                {{contest.start_time | localtime('YYYY-M-D HH:mm') }}
-              </Button>
-              <Button type="success" shape="circle" size="small" icon="android-time">
-                {{getDuration(contest.start_time, contest.end_time)}}
-              </Button>
-              <Button type="warning" shape="circle" size="small" icon="trophy">
-                {{contest.rule_type}}
-              </Button>
-            </div>
-            <div class="contest-content-description">
-              <blockquote v-html="contest.description"></blockquote>
-            </div>
+  <div class='home-page'>
+    <Carousel class="carousel-container" v-model="value1">
+      <Carousel-item>
+        <div class="carousel-content slogan">
+          <video src="@/assets/home3.webm" ref="videoPlayer" loop autoplay muted />
+          <div class="slogan-container">
+            <span>算法之美</span>
+            <span>不止于此</span>
           </div>
-        </CarouselItem>
-      </Carousel>
-    </panel>
-    <Announcements class="announcement"></Announcements>
-    </Col>
-  </Row>
+        </div>
+      </Carousel-item>
+      <Carousel-item>
+        <div class="carousel-content">2</div>
+      </Carousel-item>
+      <Carousel-item>
+        <div class="carousel-content">3</div>
+      </Carousel-item>
+      <Carousel-item>
+        <div class="carousel-content">4</div>
+      </Carousel-item>
+    </Carousel>
+  </div>
 </template>
 
 <script>
-  import Announcements from './Announcements.vue'
-  import api from '@oj/api'
-  import time from '@/utils/time'
-  import { CONTEST_STATUS } from '@/utils/constants'
-
-  export default {
-    name: 'home',
-    components: {
-      Announcements
-    },
-    data () {
-      return {
-        contests: [],
-        index: 0
-      }
-    },
-    mounted () {
-      let params = {status: CONTEST_STATUS.NOT_START}
-      api.getContestList(0, 5, params).then(res => {
-        this.contests = res.data.data.results
-      })
-    },
-    methods: {
-      getDuration (startTime, endTime) {
-        return time.duration(startTime, endTime)
-      },
-      goContest () {
-        this.$router.push({
-          name: 'contest-details',
-          params: {contestID: this.contests[this.index].id}
-        })
-      }
-    }
-  }
+export default {
+  name: 'home'
+}
 </script>
 
 <style lang="less" scoped>
-  .contest {
-    &-title {
-      font-style: italic;
-      font-size: 21px;
-    }
-    &-content {
-      padding: 0 70px 40px 70px;
-      &-description {
-        margin-top: 25px;
-      }
-    }
-  }
+.home-page {
+  width: 100%;
+  height: 100%;
+}
 
-  .announcement {
-    margin-top: 20px;
+.carousel-container,
+.carousel-content,
+.carousel-content video {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-content video {
+  object-position: center;
+  object-fit: cover;
+}
+.slogan{
+  position: relative;
+}
+.slogan-container{
+  position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    height: 110px;
+    text-align: center;
+    font-size: 74px;
+	-webkit-animation: tracking-in-expand-fwd-bottom 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: tracking-in-expand-fwd-bottom 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    span{
+      margin: 0 30px;
+    }
+}
+ @-webkit-keyframes tracking-in-expand-fwd-bottom {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-transform: translateZ(-700px) translateY(500px);
+            transform: translateZ(-700px) translateY(500px);
+    opacity: 0;
   }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0) translateY(0);
+            transform: translateZ(0) translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-expand-fwd-bottom {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-transform: translateZ(-700px) translateY(500px);
+            transform: translateZ(-700px) translateY(500px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0) translateY(0);
+            transform: translateZ(0) translateY(0);
+    opacity: 1;
+  }
+}
+
+</style>
+<style>
+.home-page .ivu-carousel-list,
+.home-page .ivu-carousel-track,
+.home-page .ivu-carousel-item {
+  width: 100%;
+  height: 100% !important;
+}
 </style>

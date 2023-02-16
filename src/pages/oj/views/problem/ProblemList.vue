@@ -1,4 +1,6 @@
 <template>
+  
+<NormalPageContainer>
   <Row type="flex" :gutter="18">
     <Col :span=19>
     <Panel shadow>
@@ -70,6 +72,7 @@
     <Spin v-if="loadings.tag" fix size="large"></Spin>
     </Col>
   </Row>
+</NormalPageContainer>
 </template>
 
 <script>

@@ -1,4 +1,5 @@
 <template>
+<NormalPageContainer>
   <div class="flex-container">
     <div id="contest-main">
       <!--children-->
@@ -73,6 +74,7 @@
       </VerticalMenu>
     </div>
   </div>
+</NormalPageContainer>
 </template>
 
 <script>

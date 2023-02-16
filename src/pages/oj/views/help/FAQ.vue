@@ -1,4 +1,12 @@
+<!--
+ * @Description: 
+ * @Author: JunLiangWang
+ * @Date: 2023-02-11 10:35:53
+ * @LastEditors: JunLiangWang
+ * @LastEditTime: 2023-02-15 22:27:31
+-->
 <template>
+<NormalPageContainer>
   <panel>
     <div slot="title">{{$t('m.Frequently_Asked_Questions')}}</div>
     <div class="content markdown-body">
@@ -30,6 +38,7 @@
       </ul>
     </div>
   </panel>
+</NormalPageContainer>
 </template>
 
 <script>

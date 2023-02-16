@@ -1,4 +1,6 @@
 <template>
+  
+<NormalPageContainer>
   <Row type="flex">
     <Col :span="24">
     <Panel id="contest-card" shadow>
@@ -76,6 +78,7 @@
     <Pagination :total="total" :page-size.sync="limit" @on-change="changeRoute" :current.sync="page" :show-sizer="true" @on-page-size-change="changeRoute"></Pagination>
     </Col>
   </Row>
+</NormalPageContainer>
 
 </template>
 

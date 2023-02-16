@@ -1,4 +1,6 @@
 <template>
+  
+<NormalPageContainer>
   <Row type="flex" justify="space-around">
     <Col :span="22">
     <Panel :padding="10">
@@ -13,6 +15,7 @@
                 show-sizer @on-page-size-change="getRankData(1)"></Pagination>
     </Col>
   </Row>
+</NormalPageContainer>
 </template>
 
 <script>

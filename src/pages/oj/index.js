@@ -31,7 +31,8 @@ import 'echarts/lib/component/legend'
 import 'echarts/lib/component/tooltip'
 import 'echarts/lib/component/toolbox'
 import 'echarts/lib/component/markPoint'
-
+import NormalPageContainer from  './components/normal-page-container.vue'
+Vue.component('NormalPageContainer',NormalPageContainer)
 // register global utility filters.
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
