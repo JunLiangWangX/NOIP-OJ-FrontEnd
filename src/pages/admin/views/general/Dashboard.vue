@@ -14,17 +14,17 @@
         <hr/>
         <div class="last-info">
           <p class="last-info-title">{{$t('m.Last_Login')}}</p>
-          <el-form label-width="80px" class="last-info-body">
-            <el-form-item label="Time:">
+          <el-form label-width="100px" class="last-info-body">
+            <el-form-item label="登录时间：">
               <span>{{session.last_activity | localtime}}</span>
             </el-form-item>
-            <el-form-item label="IP:">
+            <el-form-item label="IP地址：">
               <span>{{session.ip}}</span>
             </el-form-item>
-            <el-form-item label="OS">
+            <el-form-item label="操作系统：">
               <span>{{os}}</span>
             </el-form-item>
-            <el-form-item label="Browser:">
+            <el-form-item label="浏览器：">
               <span>{{browser}}</span>
             </el-form-item>
           </el-form>
@@ -34,17 +34,17 @@
         <p>{{$t('m.DashBoardJudge_Server')}}:  {{infoData.judge_server_count}}</p>
         <p>{{$t('m.HTTPS_Status')}}:
           <el-tag :type="https ? 'success' : 'danger'" size="small">
-            {{ https ? 'Enabled' : 'Disabled'}}
+            {{ https ? '启用' : '未启用'}}
           </el-tag>
         </p>
         <p>{{$t('m.Force_HTTPS')}}:
           <el-tag :type="forceHttps ? 'success' : 'danger'" size="small">
-            {{forceHttps ? 'Enabled' : 'Disabled'}}
+            {{forceHttps ? '启用' : '未启用'}}
           </el-tag>
         </p>
         <p>{{$t('m.CDN_HOST')}}:
           <el-tag :type="cdn ? 'success' : 'warning'" size="small">
-            {{cdn ? cdn : 'Not Use'}}
+            {{cdn ? cdn : '未启用'}}
           </el-tag>
         </p>
       </panel>
@@ -52,37 +52,30 @@
 
     <el-col :md="14" :lg="16" v-if="isSuperAdmin">
       <div class="info-container">
-        <info-card color="#909399" icon="el-icon-fa-users" message="Total Users" iconSize="30px" class="info-item"
+        <info-card color="#909399" icon="el-icon-fa-users" message="总用户" iconSize="30px" class="info-item"
                    :value="infoData.user_count"></info-card>
-        <info-card color="#67C23A" icon="el-icon-fa-list" message="Today Submissions" class="info-item"
+        <info-card color="#67C23A" icon="el-icon-fa-list" message="今日任务" class="info-item"
                    :value="infoData.today_submission_count"></info-card>
-        <info-card color="#409EFF" icon="el-icon-fa-trophy" message="Recent Contests" class="info-item"
+        <info-card color="#409EFF" icon="el-icon-fa-trophy" message="最近的比赛" class="info-item"
                    :value="infoData.recent_contest_count"></info-card>
       </div>
       <panel style="margin-top: 5px">
-        <span slot="title" v-loading="loadingReleases">Release Notes
-        <el-popover placement="right" trigger="hover">
-          <i slot="reference" class="el-icon-fa-question-circle import-user-icon"></i>
-          <p>Please upgrade to the latest version to enjoy the new features. </p>
-          <p>Reference: <a href="http://docs.onlinejudge.me/#/onlinejudge/guide/upgrade" target="_blank">
-          http://docs.onlinejudge.me/#/onlinejudge/guide/upgrade</a>
-          </p>
-        </el-popover>
+        <span slot="title" v-loading="loadingReleases">版本变更历史
         </span>
 
         <el-collapse v-model="activeNames" v-for="(release, index) of releases" :key="'release' + index">
           <el-collapse-item :name="index+1">
             <template slot="title">
               <div v-if="release.new_version">{{release.title}}
-                <el-tag size="mini" type="success">New Version</el-tag>
+                <el-tag size="mini" type="success">最新版本</el-tag>
               </div>
               <span v-else>{{release.title}}</span>
             </template>
-            <p>Level: {{release.level}}</p>
-            <p>Details: </p>
+            <p>等级: {{release.level}}</p>
+            <p>详情: </p>
             <div class="release-body">
               <ul v-for="detail in release.details" :key="detail">
-                <li v-html="detail"></li>
+                <li v-html="detail.replace(/(<\/?a.*?>)|(<\/?span.*?>)/g,'')"></li>
               </ul>
             </div>
           </el-collapse-item>

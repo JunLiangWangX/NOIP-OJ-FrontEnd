@@ -2,7 +2,7 @@
   <div>
     <div style="padding-bottom: 10px;">
     </div>
-    <panel title="Export Problems (beta)">
+    <panel title="导出问题">
       <div slot="header">
         <el-input
           v-model="keyword"
@@ -22,21 +22,21 @@
           prop="id">
         </el-table-column>
         <el-table-column
-          label="DisplayID"
+          label="展示ID"
           width="200"
           prop="_id">
         </el-table-column>
         <el-table-column
-          label="Title"
+          label="题目名称"
           prop="title">
         </el-table-column>
         <el-table-column
           prop="created_by.username"
-          label="Author">
+          label="创建人">
         </el-table-column>
         <el-table-column
           prop="create_time"
-          label="Create Time">
+          label="创建时间">
           <template slot-scope="scope">
             {{scope.row.create_time | localtime }}
           </template>
@@ -56,7 +56,7 @@
         </el-pagination>
       </div>
     </panel>
-    <panel title="Import QDUOJ Problems (beta)">
+    <!---<panel title="Import QDUOJ Problems (beta)">
       <el-upload
         ref="QDU"
         action="/api/admin/import_problem"
@@ -72,9 +72,9 @@
         <el-button size="small" type="primary" icon="el-icon-fa-upload" slot="trigger">Choose File</el-button>
         <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload('QDU')">Upload</el-button>
       </el-upload>
-    </panel>
+    </panel>-->
 
-    <panel title="Import FPS Problems (beta)">
+    <panel title="导入FPS问题">
       <el-upload
         ref="FPS"
         action="/api/admin/import_fps"
@@ -87,8 +87,8 @@
         :auto-upload="false"
         :on-success="uploadSucceeded"
         :on-error="uploadFailed">
-        <el-button size="small" type="primary" icon="el-icon-fa-upload" slot="trigger">Choose File</el-button>
-        <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload('FPS')">Upload</el-button>
+        <el-button size="small" type="primary" icon="el-icon-fa-upload" slot="trigger">选择文件</el-button>
+        <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload('FPS')">上传</el-button>
       </el-upload>
     </panel>
   </div>
