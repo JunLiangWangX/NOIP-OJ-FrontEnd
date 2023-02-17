@@ -86,7 +86,7 @@
         </el-button>
         <el-button v-if="contestId" type="primary"
                    size="small" icon="el-icon-plus"
-                   @click="addProblemDialogVisible = true">添加公开的问题
+                   @click="addProblemDialogVisible = true">添加已创建的问题
         </el-button>
         <el-pagination
           class="page"
@@ -110,7 +110,7 @@
         <save @click.native="updateProblem(currentRow)"></save>
       </span>
     </el-dialog>
-    <el-dialog title="Add Contest Problem"
+    <el-dialog title="添加已创建的问题"
                v-if="contestId"
                width="80%"
                :visible.sync="addProblemDialogVisible"
@@ -209,7 +209,7 @@
         })
       },
       makeContestProblemPublic (problemID) {
-        this.$prompt('公开的问题请输入显示id', '确认').then(({value}) => {
+        this.$prompt('请输入显示id', '确认').then(({value}) => {
           api.makeContestProblemPublic({id: problemID, display_id: value}).catch()
         }, () => {
         })
