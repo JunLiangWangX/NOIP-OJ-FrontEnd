@@ -20,7 +20,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item :label="$t('m.Password')" label-width="90px" required>
-              <el-input v-model="smtp.password" type="password" placeholder="SMTP Server Password"></el-input>
+              <el-input v-model="smtp.password" type="password" placeholder="请输入SMTP服务器密码"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="24">
@@ -32,9 +32,9 @@
           </el-col>
         </el-row>
       </el-form>
-      <el-button type="primary" @click="saveSMTPConfig">Save</el-button>
+      <el-button type="primary" @click="saveSMTPConfig">保存</el-button>
       <el-button type="warning" @click="testSMTPConfig"
-                 v-if="saved" :loading="loadingBtnTest">Send Test Email</el-button>
+                 v-if="saved" :loading="loadingBtnTest">发送测试邮件</el-button>
     </Panel>
 
     <Panel :title="$t('m.Website_Config')">
@@ -114,7 +114,7 @@
           this.smtp = res.data.data
         } else {
           this.init = true
-          this.$warning('Please setup SMTP config at first')
+          this.$warning('请首先配置SMTP')
         }
       })
       api.getWebsiteConfig().then(res => {
@@ -137,7 +137,7 @@
         }
       },
       testSMTPConfig () {
-        this.$prompt('Please input your email', '', {
+        this.$prompt('请输入你的邮箱地址', '', {
           inputPattern: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
           inputErrorMessage: 'Error email format'
         }).then(({value}) => {
