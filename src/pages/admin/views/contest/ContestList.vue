@@ -53,7 +53,7 @@
           <template slot-scope="scope">
             <el-tag
               :type="scope.row.status === '-1' ? 'danger' : scope.row.status === '0' ? 'success' : 'primary'">
-              {{ scope.row.status | contestStatus}}
+              {{$t('m.' +CONTEST_STATUS_REVERSE[scope.row.status].name.replace(/ /g, "_"))}}
             </el-tag>
           </template>
         </el-table-column>
@@ -120,7 +120,8 @@
         excludeAdmin: true,
         currentPage: 1,
         currentId: 1,
-        downloadDialogVisible: false
+        downloadDialogVisible: false,
+        CONTEST_STATUS_REVERSE
       }
     },
     mounted () {
