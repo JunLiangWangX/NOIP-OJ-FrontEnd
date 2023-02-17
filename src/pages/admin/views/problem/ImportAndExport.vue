@@ -7,7 +7,7 @@
         <el-input
           v-model="keyword"
           prefix-icon="el-icon-search"
-          placeholder="Keywords">
+          placeholder="输入关键字搜索">
         </el-input>
       </div>
       <el-table :data="problems"
@@ -45,7 +45,7 @@
 
       <div class="panel-options">
         <el-button type="primary" size="small" v-show="selected_problems.length"
-                   @click="exportProblems" icon="el-icon-fa-arrow-down">Export
+                   @click="exportProblems" icon="el-icon-fa-arrow-down">导出问题
         </el-button>
         <el-pagination
           class="page"

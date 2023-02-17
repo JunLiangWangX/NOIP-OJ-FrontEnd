@@ -114,9 +114,9 @@
         </el-row>
         <div>
           <el-form-item v-for="(sample, index) in problem.samples" :key="'sample'+index">
-            <Accordion :title="'Sample' + (index + 1)">
+            <Accordion :title="'样例' + (index + 1)">
               <el-button type="warning" size="small" icon="el-icon-delete" slot="header" @click="deleteSample(index)">
-                Delete
+                删除
               </el-button>
               <el-row :gutter="20">
                 <el-col :span="12">
@@ -203,7 +203,7 @@
                 :show-file-list="true"
                 :on-success="uploadSucceeded"
                 :on-error="uploadFailed">
-                <el-button size="small" type="primary" icon="el-icon-fa-upload">Choose File</el-button>
+                <el-button size="small" type="primary" icon="el-icon-fa-upload">选择文件</el-button>
               </el-upload>
             </el-form-item>
           </el-col>
@@ -281,10 +281,10 @@
     data () {
       return {
         rules: {
-          _id: {required: true, message: 'Display ID is required', trigger: 'blur'},
-          title: {required: true, message: 'Title is required', trigger: 'blur'},
-          input_description: {required: true, message: 'Input Description is required', trigger: 'blur'},
-          output_description: {required: true, message: 'Output Description is required', trigger: 'blur'}
+          _id: {required: true, message: '请输入展示ID', trigger: 'blur'},
+          title: {required: true, message: '请输入标题', trigger: 'blur'},
+          input_description: {required: true, message: '请输入输入描述', trigger: 'blur'},
+          output_description: {required: true, message: '请输入输出描述', trigger: 'blur'}
         },
         loadingCompile: false,
         mode: '',
